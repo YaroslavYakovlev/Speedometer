@@ -1,23 +1,31 @@
 #include <iostream>
 #include <sstream>
+#include <stdio.h>
+#include <iomanip>
 
-void compare(double value, double epsilon){}
 
 int main(){
   std::cout << "Speedometer" << std::endl;
   double speed;
   double delta;
   std::stringstream speedometer;
-  while(speed > 0){
-    std::cin >> delta;
 
-      speed += delta;
-    
-    speedometer << speed << " km/h ";
-    std::cout << speedometer.str() << std::endl;
-  }
+  do {
+    std::cin >> delta;
+    speed += delta;
+
+    if(speed > 150){
+      std::cout << "Reduce the speed" << std::endl;
+    }
+    speedometer << std::fixed << std::setprecision(1) << speed << " km/h ";
+
+    std::cout << speedometer.str() <<  " " << std::endl;
+    speedometer.str("");
+  }while(speed > 0);
+  
   return 0;
 }
+
 
 // Спидометр
 
